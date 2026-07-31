@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Neko — Support</title>
+<meta name="description" content="Support, setup guide and troubleshooting for Neko, a cozy proxy companion for iOS powered by the meow-rs kernel.">
+<link rel="icon" href="assets/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="assets/favicon.png">
+<link rel="stylesheet" href="assets/style.css">
+<meta property="og:title" content="Neko — Support">
+<meta property="og:description" content="Setup guide, FAQ and troubleshooting for Neko.">
+<meta property="og:image" content="assets/neko-icon-256.png">
+<meta property="og:type" content="website">
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="site">
+    <div class="bar">
+      <a class="logo" href="index.html">
+        <img src="assets/neko-icon-256.png" alt="">
+        <b class="display">Neko</b>
+      </a>
+      <nav class="site">
+        <a href="index.html" aria-current="page">Support</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <img class="icon" src="assets/neko-icon-256.png" alt="The Neko app icon: a kawaii cat face on a pink gradient">
+    <h1>Neko Support</h1>
+    <p class="lede">Neko is a cozy proxy companion for iOS — a friendly front end for the
+      <a href="https://github.com/madeye/meow-rs">meow-rs</a> kernel (compatible with mihomo / Clash Meta).
+      This page covers setup, common questions and troubleshooting.</p>
+  </section>
+
+  <section>
+    <div class="eyebrow">Getting started</div>
+    <h2>Three steps to connect</h2>
+
+    <ol class="steps">
+      <li>
+        <b>Add a Feed</b>
+        Open the <strong>Feeds</strong> tab and tap <em>Add a Feed</em>. Paste a subscription URL, or paste
+        one or more node links directly. Neko fetches the subscription and fills your node list.
+      </li>
+      <li>
+        <b>Pick a node</b>
+        Go to the <strong>Nodes</strong> tab. Tap <em>Sniff</em> to measure latency, then choose a node in the
+        <em>Pick a Kitty</em> group — or let <em>Auto Sniff</em> select the fastest one for you.
+      </li>
+      <li>
+        <b>Tap Connect</b>
+        Back on <strong>Home</strong>, tap Connect (or tap Neko). The first time, iOS asks for permission to add
+        a VPN configuration — you must allow it for the tunnel to start.
+      </li>
+    </ol>
+
+    <div class="note">
+      Neko does not provide proxy servers. You bring your own subscription or node details from a provider
+      you trust, or from your own server.
+    </div>
+  </section>
+
+  <section>
+    <div class="eyebrow">Reference</div>
+    <h2>What Neko supports</h2>
+
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr><th>Area</th><th>Supported</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Node protocols</strong></td>
+            <td>Shadowsocks (SS), VMess, Trojan, VLESS, Hysteria2</td>
+          </tr>
+          <tr>
+            <td><strong>Subscription formats</strong></td>
+            <td>Base64-encoded link lists, plain link lists, and Clash&nbsp;/&nbsp;mihomo YAML configs</td>
+          </tr>
+          <tr>
+            <td><strong>Routing modes</strong></td>
+            <td><em>Smart Paw</em> (rule-based) · <em>Roam Free</em> (global) · <em>Stay Home</em> (direct)</td>
+          </tr>
+          <tr>
+            <td><strong>Node groups</strong></td>
+            <td><em>Auto Sniff</em> picks the lowest-latency node automatically · <em>Pick a Kitty</em> lets you choose manually</td>
+          </tr>
+          <tr>
+            <td><strong>Platform</strong></td>
+            <td>iPhone and iPad. The tunnel requires a real device — VPN tunnels do not route traffic in the iOS Simulator.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>The cat tells you the state</h3>
+    <p class="muted">Neko's mascot mirrors the tunnel, so you never have to read a status line:
+      <strong>asleep</strong> means disconnected, <strong>alert</strong> means connecting,
+      <strong>happy</strong> means connected, and <strong>zooming</strong> means traffic is flying.</p>
+  </section>
+
+  <section>
+    <div class="eyebrow">Troubleshooting</div>
+    <h2>Common questions</h2>
+
+    <details>
+      <summary>“No supported nodes were found in this subscription”</summary>
+      <p>Neko could read the subscription but found no nodes it can parse. Usually one of:</p>
+      <ul>
+        <li>The links use a protocol Neko does not support yet (for example <code>ssr://</code>,
+          <code>tuic://</code> or <code>hysteria://</code> v1). Neko supports SS, VMess, Trojan, VLESS and Hysteria2.</li>
+        <li>The URL returned an error page or an empty body instead of a subscription.</li>
+        <li>The link was truncated when copied — paste the entire link, including everything after <code>?</code> and <code>#</code>.</li>
+      </ul>
+      <p>Open the <strong>Prints</strong> tab right after the failure: Neko logs the protocol scheme it saw,
+        which tells you exactly what the input contained.</p>
+    </details>
+
+    <details>
+      <summary>Tapping Connect does nothing, or no VPN prompt appears</summary>
+      <ul>
+        <li>Make sure you have at least one node — with an empty node list Neko refuses to connect and
+          asks you to add a subscription first.</li>
+        <li>The first connection needs your permission to install a VPN configuration. If you dismissed
+          the prompt, try again and choose <em>Allow</em>.</li>
+        <li>If you previously denied it, check <strong>Settings → General → VPN &amp; Device Management</strong>
+          on your device and remove any stale Neko profile, then reconnect.</li>
+      </ul>
+    </details>
+
+    <details>
+      <summary>The VPN connects but I have no internet</summary>
+      <ul>
+        <li>Check the node itself: run <em>Sniff</em> in the Nodes tab. If a node times out, it is unreachable
+          from your network — pick another one.</li>
+        <li>Confirm your subscription is still valid and has data remaining (see the usage bar in <strong>Feeds</strong>).</li>
+        <li>Try switching routing mode to <em>Roam Free</em> (global) to rule out a rule-matching problem.</li>
+        <li>Disconnect and reconnect after changing your active feed — a new feed is applied on the next connection.</li>
+      </ul>
+    </details>
+
+    <details>
+      <summary>I can’t manually select a node</summary>
+      <p>The <em>Auto Sniff</em> group is automatic by design: it continuously picks the lowest-latency node,
+        so individual nodes in it are not manually selectable. To choose a node yourself, use the
+        <em>Pick a Kitty</em> group instead.</p>
+    </details>
+
+    <details>
+      <summary>What does the latency number after “Sniff” mean?</summary>
+      <p>It depends on the state. <strong>Before connecting</strong>, Neko measures a direct TCP handshake to the
+        node's address — a quick reachability check. <strong>While connected</strong>, it asks the kernel for the
+        real proxied delay, which reflects what you actually experience through the tunnel.</p>
+    </details>
+
+    <details>
+      <summary>Switching between subscriptions</summary>
+      <p>Each feed keeps its own node list. In the <strong>Feeds</strong> tab, tap a feed to make it active —
+        the Nodes tab immediately shows that feed's nodes. Use the refresh button to re-download a
+        subscription, or the trash button to delete a feed.</p>
+    </details>
+
+    <details>
+      <summary>Where is my data stored?</summary>
+      <p>On your device only. Subscriptions, node lists and settings are saved locally in the app's own
+        storage. Neko has no accounts and no servers of its own. See the
+        <a href="privacy.html">Privacy Policy</a> for details.</p>
+    </details>
+  </section>
+
+  <section>
+    <div class="eyebrow">Contact</div>
+    <h2>Still stuck?</h2>
+    <div class="card">
+      <p>Email <a href="mailto:support@starhubinformation.info">support@starhubinformation.info</a> and include:</p>
+      <ul>
+        <li>Your device model and iOS version</li>
+        <li>What you tapped and what happened instead</li>
+        <li>Any message shown in the <strong>Prints</strong> tab</li>
+      </ul>
+      <p class="small muted">Please never send passwords, UUIDs or full subscription URLs — they are credentials.
+        Redact them before sharing.</p>
+    </div>
+  </section>
+
+  <footer class="site">
+    <span class="paw">🐾</span>
+    <span>Neko — a cozy proxy companion.</span>
+    <nav>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Use</a>
+    </nav>
+  </footer>
+
+</div>
+</body>
+</html>

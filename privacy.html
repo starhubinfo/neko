@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy — Neko</title>
+<meta name="description" content="Neko's privacy policy: no accounts, no analytics, no tracking. Your subscriptions and settings stay on your device.">
+<link rel="icon" href="assets/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="assets/favicon.png">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="site">
+    <div class="bar">
+      <a class="logo" href="index.html">
+        <img src="assets/neko-icon-256.png" alt="">
+        <b class="display">Neko</b>
+      </a>
+      <nav class="site">
+        <a href="index.html">Support</a>
+        <a href="privacy.html" aria-current="page">Privacy</a>
+        <a href="terms.html">Terms</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="legal">
+
+    <section class="hero" style="padding-bottom:0">
+      <h1>Privacy Policy</h1>
+      <p class="lede">How Neko handles your data — in short: it stays on your device.</p>
+      <p style="margin-top:18px"><span class="updated">Last updated: 31 July 2026</span></p>
+    </section>
+
+    <div class="card" style="margin-top:28px">
+      <h3>The short version</h3>
+      <ul>
+        <li>Neko has <strong>no accounts</strong> and asks for <strong>no personal information</strong>.</li>
+        <li>Neko contains <strong>no analytics, no advertising and no tracking</strong> of any kind.</li>
+        <li>Your subscriptions, nodes and settings are stored <strong>only on your device</strong>.</li>
+        <li>Neko operates <strong>no proxy servers</strong>. Your traffic goes to servers <em>you</em> configure.</li>
+        <li>Neko <strong>does not log, collect or transmit</strong> your browsing history or traffic contents.</li>
+      </ul>
+    </div>
+
+    <h2 id="who">1. Who this policy covers</h2>
+    <p>This policy applies to the Neko application for iOS (“Neko”, “the app”), developed by
+      <strong>StarHub Information</strong> (“we”, “us”). It does not cover the proxy providers, subscription services or
+      servers you choose to use with Neko — those are operated by third parties under their own policies.</p>
+
+    <h2 id="collect">2. Information we collect</h2>
+    <p><strong>We collect nothing.</strong> Neko does not require an account, does not ask for your name, email
+      address, phone number or payment details, and contains no analytics, telemetry, crash-reporting or
+      advertising SDKs. We operate no servers that receive data from the app.</p>
+
+    <h2 id="device">3. Data stored on your device</h2>
+    <p>To function, Neko saves the following in its own private storage on your device (including a shared
+      app group container used by its network extension):</p>
+    <ul>
+      <li><strong>Subscriptions and node details</strong> you add — names, server addresses, ports and the
+        credentials contained in the links you paste (for example UUIDs or passwords).</li>
+      <li><strong>App settings</strong> such as routing mode, sound and haptics preferences.</li>
+      <li><strong>A generated kernel configuration file</strong> and a local API credential used by the app to
+        control its own tunnel process on your device (loopback only).</li>
+      <li><strong>Recent activity logs</strong> shown in the Prints tab. These stay on your device and are not
+        transmitted anywhere.</li>
+    </ul>
+    <p>This data is never uploaded to us. You can remove it at any time by deleting individual feeds in the
+      app, or by deleting the app, which removes all of its stored data.</p>
+
+    <h2 id="network">4. Network connections Neko makes</h2>
+    <p>For transparency, these are the only outbound connections the app initiates:</p>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Connection</th><th>Destination</th><th>Purpose</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>Subscription download</td>
+            <td>The URL <em>you</em> enter</td>
+            <td>To fetch your node list. Includes the usage figures your provider returns.</td>
+          </tr>
+          <tr>
+            <td>Latency test (“Sniff”)</td>
+            <td>Your nodes’ addresses</td>
+            <td>A TCP connection to measure reachability and latency.</td>
+          </tr>
+          <tr>
+            <td>Connectivity check</td>
+            <td><code>www.gstatic.com/generate_204</code></td>
+            <td>A standard, contentless endpoint used to measure real latency through a node while connected.</td>
+          </tr>
+          <tr>
+            <td>Proxied traffic</td>
+            <td>The proxy servers you configure</td>
+            <td>Your device’s traffic while the tunnel is active.</td>
+          </tr>
+          <tr>
+            <td>DNS resolution</td>
+            <td>Public resolvers (currently <code>223.5.5.5</code> and <code>8.8.8.8</code>)</td>
+            <td>Used by the bundled kernel to resolve names while the tunnel is active.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p>None of these connections send data to us, because we do not run any of these endpoints.</p>
+
+    <h2 id="vpn">5. About the VPN permission</h2>
+    <p>Neko asks iOS for permission to add a VPN configuration. This is required for any app that routes
+      device traffic through a tunnel. Neko uses this capability solely to pass your traffic to the proxy
+      servers you configured. It does <strong>not</strong> inspect, record or transmit the contents of your
+      traffic, and no traffic is sent to us.</p>
+
+    <h2 id="third">6. Third parties</h2>
+    <ul>
+      <li><strong>Your proxy or subscription provider</strong> can see the traffic you route through their
+        servers, subject to their own privacy policy. Choose providers you trust.</li>
+      <li><strong>Apple</strong> may collect data related to app distribution, purchases and crash reporting
+        under Apple’s privacy policy. We do not receive personal data from Apple.</li>
+    </ul>
+
+    <h2 id="sharing">7. Sharing and selling data</h2>
+    <p>We do not sell, rent, trade or share your data — we do not have it.</p>
+
+    <h2 id="children">8. Children</h2>
+    <p>Neko is not directed at children under 13, and we knowingly collect no information from anyone.</p>
+
+    <h2 id="security">9. Security</h2>
+    <p>Data stays inside the app’s sandbox, protected by iOS file protection and your device passcode or
+      biometric lock. Because credentials from your subscriptions are stored on the device, we recommend
+      keeping a device passcode enabled.</p>
+
+    <h2 id="rights">10. Your choices and rights</h2>
+    <p>Since we hold no personal data about you, there is nothing for us to export, correct or delete on your
+      behalf. You retain full control locally: delete a feed to remove its nodes, or delete the app to remove
+      everything.</p>
+
+    <h2 id="changes">11. Changes to this policy</h2>
+    <p>If this policy changes, we will update this page and revise the “last updated” date above. Material
+      changes will also be noted in the app’s release notes.</p>
+
+    <h2 id="contact">12. Contact</h2>
+    <p>Questions about this policy: <a href="mailto:support@starhubinformation.info">support@starhubinformation.info</a></p>
+
+  </main>
+
+  <footer class="site">
+    <span class="paw">🐾</span>
+    <span>Neko — a cozy proxy companion.</span>
+    <nav>
+      <a href="index.html">Support</a>
+      <a href="terms.html">Terms of Use</a>
+    </nav>
+  </footer>
+
+</div>
+</body>
+</html>
